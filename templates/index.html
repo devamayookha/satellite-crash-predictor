@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satellite Crash Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <canvas id="starfield"></canvas>
+
+    <div class="container">
+
+        <header>
+            <div class="badge">CONJUNCTION ASSESSMENT SYSTEM</div>
+            <h1>Satellite Crash<br>Predictor</h1>
+            <p class="subtitle">Heuristic risk scoring · Not a physics simulation</p>
+        </header>
+
+        <div class="grid">
+
+            <div class="panel form-panel">
+                <div class="panel-label">ORBITAL PARAMETERS</div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Object 1 Altitude</label>
+                        <div class="input-wrap">
+                            <input type="number" id="altitude1">
+                            <span class="unit">km</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Object 2 Altitude</label>
+                        <div class="input-wrap">
+                            <input type="number" id="altitude2">
+                            <span class="unit">km</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Relative Velocity</label>
+                        <div class="input-wrap">
+                            <input type="number" id="velocity" step="0.1">
+                            <span class="unit">km/s</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Miss Distance</label>
+                        <div class="input-wrap">
+                            <input type="number" id="miss_distance" step="0.1">
+                            <span class="unit">km</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Object Size Category</label>
+                        <div class="input-wrap">
+                            <select id="size_category">
+                                <option value="Debris">Debris</option>
+                                <option value="CubeSat">CubeSat</option>
+                                <option value="Large Satellite">Large Satellite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Time to Closest Approach</label>
+                        <div class="input-wrap">
+                            <input type="number" id="time_to_approach" step="0.5">
+                            <span class="unit">hrs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="assess-btn">
+                    <span id="btn-text">RUN ASSESSMENT</span>
+                </button>
+            </div>
+
+            <div class="panel result-panel" id="result-panel">
+                <div class="panel-label">ASSESSMENT RESULT</div>
+
+                <div class="empty-state" id="empty-state">
+                    <div class="orbit-icon">
+                        <div class="orbit-ring"></div>
+                        <div class="orbit-dot"></div>
+                    </div>
+                    <p>Enter parameters and run assessment</p>
+                </div>
+
+                <div class="result-content" id="result-content" style="display:none;">
+                    <div class="risk-badge" id="risk-badge">
+                        <span id="risk-label"></span>
+                        <span class="risk-word" id="risk-word">RISK</span>
+                    </div>
+
+                    <div class="score-bar-wrap">
+                        <div class="score-bar-label">
+                            <span>RISK SCORE</span>
+                            <span id="score-number">0/100</span>
+                        </div>
+                        <div class="score-bar-track">
+                            <div class="score-bar-fill" id="score-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="action-box" id="action-box">
+                        <div class="action-label">RECOMMENDED ACTION</div>
+                        <div class="action-text" id="action-text"></div>
+                    </div>
+
+                    <div class="explanation-box">
+                        <div class="action-label">ANALYSIS</div>
+                        <p id="explanation-text"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+        
+        </footer>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
