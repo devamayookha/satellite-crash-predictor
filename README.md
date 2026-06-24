@@ -12,6 +12,12 @@ with Python, Flask, and vanilla JavaScript.
 
 ---
 
+## Live Demo
+
+[https://satellite-crash-predictor.onrender.com](https://satellite-crash-predictor.onrender.com)
+
+---
+
 ## Features
 
 - Estimates collision risk as Low / Medium / High
@@ -19,6 +25,7 @@ with Python, Flask, and vanilla JavaScript.
 - Explains why a risk level was assigned in plain English
 - Time-to-closest-approach can escalate recommended action
 - Animated starfield UI with live score bar
+- Input validation for empty and negative values
 
 ---
 
@@ -26,16 +33,21 @@ with Python, Flask, and vanilla JavaScript.
 
 - Python 3
 - Flask
+- Gunicorn
 - Vanilla HTML / CSS / JavaScript
+- Deployed on Render
 
 ---
 
-## How to Run
+## How to Run Locally
 
-1. Clone the repository
+1. Clone the repository:
+```
+   git clone https://github.com/YOUR_USERNAME/satellite-crash-predictor.git
+```
 2. Install dependencies:
 ```
-   pip install flask
+   pip install -r requirements.txt
 ```
 3. Run the app:
 ```
@@ -87,12 +99,25 @@ escalate the recommended action if the window is short.
 satellite-crash-predictor/
 ├── app.py              # Flask server
 ├── risk_logic.py       # Scoring logic
+├── requirements.txt    # Python dependencies
+├── Procfile            # Render deployment config
 ├── templates/
 │   └── index.html      # UI layout
 └── static/
     ├── style.css        # Styling
     └── script.js        # Starfield + fetch logic
 ```
+
+---
+
+## Version 2 Ideas
+
+- Per-object size selection (Object 1 and Object 2 separately)
+- Additional object categories (Rocket Body, Microsatellite)
+- Probability of collision estimate using simplified hard-body radius math
+- Multiple conjunction events in one session
+- Export assessment result as PDF
+- Real TLE data integration using CelesTrak API
 
 ---
 
