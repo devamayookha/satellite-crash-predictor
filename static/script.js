@@ -38,8 +38,13 @@ document.getElementById("assess-btn").addEventListener("click", async () => {
 
     const fields = ["altitude1", "altitude2", "velocity", "miss_distance", "time_to_approach"];
     for (const id of fields) {
-        if (document.getElementById(id).value === "") {
+        const value = document.getElementById(id).value;
+        if (value === "") {
             alert("Please fill in all fields before running the assessment.");
+            return;
+        }
+        if (parseFloat(value) < 0) {
+            alert("All values must be positive numbers. Please check your inputs.");
             return;
         }
     }
